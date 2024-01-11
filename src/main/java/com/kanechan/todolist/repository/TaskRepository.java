@@ -14,7 +14,7 @@ import com.kanechan.todolist.model.Task;
 public interface TaskRepository extends JpaRepository<Task, Long>{
 
 	@Query("SELECT a FROM Task a WHERE UPPER(TRIM(a.descricao)) LIKE %?1%")
-	List<Task> buscarAcessoDesc(String desc);
+	List<Task> buscarTaskDesc(String desc);
 
 	
 

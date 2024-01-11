@@ -35,6 +35,17 @@ public class TaskController {
 	@PostMapping(value = "/salvarTask")
 	public ResponseEntity<Task> salvarTask(@RequestBody @Valid Task task) throws ExceptionToDoListJava{
 		
+		if(task.getDescricao().trim() == null || task.getDescricao() == "") {
+			throw new ExceptionToDoListJava("Descrição deve ser informada.");
+		}
+		
+		if(task.getId() == null) {
+			List<Task> tasks = taskRepository.buscarTaskDesc(task.getDescricao().toUpperCase());
+			if(!tasks.isEmpty()) {
+				throw new ExceptionToDoListJava("Já existe uma tarefa com a descrição: "+task.getDescricao());
+			}
+		}
+		
 		return new ResponseEntity<Task>(taskService.save(task), HttpStatus.OK);
 	}
 	
@@ -63,7 +74,7 @@ public class TaskController {
 	@GetMapping(value = "/buscarTaskPorDesc/{desc}")
 	public ResponseEntity<List<Task>> buscarTaskPorDesc(@PathVariable("desc") String desc) {
 		
-		List<Task> tasks = taskRepository.buscarAcessoDesc(desc.toUpperCase());
+		List<Task> tasks = taskRepository.buscarTaskDesc(desc.toUpperCase());
 		
 		return new ResponseEntity<List<Task>>(tasks, HttpStatus.OK);
 	}
