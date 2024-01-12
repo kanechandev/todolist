@@ -27,6 +27,18 @@ O aplicativo utiliza um banco de dados PostgreSQL 9.5 para facilitar a execuçã
 	
 # Acessando a API via Postman
 
+## Uso do Postman
+
+Para facilitar o teste da API, disponibilizamos uma coleção do Postman com os principais endpoints. Siga as instruções abaixo para importar a coleção:
+
+1. Baixe a [Coleção do Postman](https://drive.google.com/file/d/14MAZ-_y9Cvo2pmKxMrIS3SmUsK1_5l8R/view?usp=drive_link).
+2. Abra o Postman e clique em "Importar" na barra lateral esquerda.
+3. Selecione "Importar do Link" e cole o link da coleção.
+4. A coleção será importada e estará disponível no Postman.
+
+Lembre-se de ajustar as variáveis de ambiente, se necessário, para corresponder ao seu ambiente local.
+
+
 ## 1. Salvar uma Nova Tarefa (POST)
 
 - **Endpoint:** `http://localhost:8080/api/tasks/salvarTask`
