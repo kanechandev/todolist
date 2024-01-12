@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -80,7 +82,17 @@ public class TaskController {
 	}
 	
 	
-	
+	@PutMapping("/atualizarTaskStatus/{id}/isCompletado")
+    public ResponseEntity<String> atualizarTaskStatus(@PathVariable Long id, @RequestParam(required = false, defaultValue = "value") boolean isCompletado) {
+        boolean updated = taskService.atualizarTaskStatus(id, isCompletado);
+
+        if (updated) {        	
+        	return new ResponseEntity<String>("Tarefa atualizada com sucesso!", HttpStatus.NO_CONTENT);
+           // return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 	
 	
 	
