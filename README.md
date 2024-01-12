@@ -81,6 +81,40 @@ Lembre-se de ajustar as variáveis de ambiente, se necessário, para corresponde
 - **Parâmetros de Query:**
   - `isCompletado` (opcional, padrão: `value`): `true` para tarefa completada, `false` para tarefa não completada.
 
+# Testes Automatizados
+
+## Teste de Integração com TaskController
+
+Para garantir o correto funcionamento do `TaskController` e a integração adequada com o banco de dados, são fornecidos testes automatizados utilizando a biblioteca JUnit 5 e a biblioteca Awaitility para testes assíncronos. Abaixo, detalhamos um exemplo de teste incluído no arquivo `TodolistApplicationTests.java`:
+
+### [TodolistApplicationTests.java](src/test/java/com/kanechan/todolist/TodolistApplicationTests.java)
+
+Este teste verifica a funcionalidade de salvar uma tarefa (`testSalvarTask`) utilizando o método `salvarTask` do `TaskController`. Abaixo estão os passos chave do teste:
+
+1. **Criação da Tarefa:**
+   - Uma nova instância da classe `Task` é criada com uma descrição de teste.
+
+2. **Chamada do Método no Controlador:**
+   - O método `salvarTask` do `TaskController` é chamado com a tarefa criada.
+
+3. **Verificação da Resposta:**
+   - É verificado se a resposta foi bem-sucedida (código HTTP 200).
+
+4. **Obtenção da Tarefa Salva:**
+   - A tarefa salva é obtida do corpo da resposta.
+
+5. **Espera Assíncrona:**
+   - Utilizando o Awaitility, o teste aguarda até que a tarefa seja persistida no banco de dados (por um máximo de 5 segundos).
+
+6. **Verificação no Banco de Dados:**
+   - É verificado se a tarefa está presente no banco de dados.
+
+
+`bash`
+mvn test
+
+
+
 
 ## Licença
 
