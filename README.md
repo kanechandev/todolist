@@ -15,8 +15,8 @@ O aplicativo utiliza um banco de dados PostgreSQL 9.5 para facilitar a execuçã
 
 1. **Clonar o Repositório:**
    ```bash
-   git clone https://seu-repositorio-git.com/todo-list-java.git
-   cd todo-list-java
+   git clone https://github.com/kanechandev/todolist.git
+   cd todolist
 
 2. **Executar o Aplicativo:**
    ```bash
